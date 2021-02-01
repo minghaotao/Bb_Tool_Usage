@@ -1,0 +1,17 @@
+ select
+        lct.tool_id,
+        lcta.tool_source_id,
+        count(distinct lcta.course_id) as distinct_tool_course_accessed,
+        count(distinct lcta.id) as tool_accesses,
+        count(distinct lcta.person_id) as distinct_tool_users,
+        sum(lcta.duration_sum)/120 as tool_hours
+    from cdm_lms.course_tool lct
+    inner join cdm_lms.course_tool_activity lcta
+        on lcta.course_tool_id = lct.id
+  
+    left join cdm_lms.course clc
+    on lct.course_id = clc.id
+    
+    where clc.course_number like '%F2020'
+  
+    group by lct.tool_id,lcta.tool_source_id
