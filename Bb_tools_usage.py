@@ -6,7 +6,6 @@ import datetime
 plt.style.use("fivethirtyeight")
 
 df = pd.read_csv('/Users/edwardt/Desktop/Bb_reports/Tools_usage1.csv')
-df = pd.read_csv('/Users/edwardt/Desktop/Bb_reports/Tools_usage1.csv')
 df = df.sort_values(by=['DISTINCT_TOOL_COURSE_ACCESSED'],ascending=False)
 rows = df.iloc[7:69]
 # df.head(70)
